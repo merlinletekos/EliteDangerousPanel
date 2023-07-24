@@ -2,6 +2,7 @@
 using EliteAPI;
 using EliteAPI.Abstractions;
 using EliteAPI.Events;
+using EliteDangerousControllers.src.interfaces;
 
 namespace EliteDangerousControllers.src
 {
