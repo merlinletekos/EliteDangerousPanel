@@ -1,0 +1,15 @@
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.csproj.AssemblyReference.cache
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.AssemblyInfoInputs.cache
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.AssemblyInfo.cs
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.csproj.CoreCompileInputs.cache
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\bin\Debug\net7.0\EliteDangerousControllers.exe
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\bin\Debug\net7.0\EliteDangerousControllers.deps.json
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\bin\Debug\net7.0\EliteDangerousControllers.runtimeconfig.json
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\bin\Debug\net7.0\EliteDangerousControllers.dll
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\bin\Debug\net7.0\EliteDangerousControllers.pdb
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.dll
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\refint\EliteDangerousControllers.dll
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.pdb
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\EliteDangerousControllers.genruntimeconfig.cache
+C:\Users\merli\Documents\project\hub\EliteDangerousPanel\EliteDangerousControllers\obj\Debug\net7.0\ref\EliteDangerousControllers.dll
