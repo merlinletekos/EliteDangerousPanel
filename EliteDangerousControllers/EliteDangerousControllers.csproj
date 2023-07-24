@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="EliteAPI" Version="3.0.10" />
+    <PackageReference Include="System.IO.Ports" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
