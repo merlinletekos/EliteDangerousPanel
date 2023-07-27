@@ -7,9 +7,9 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
     class StatusObject: IJsonObject
     {
         public string _name { set; get; }
-        public string _value { set; get; }
+        public bool _value { set; get; }
 
-        public StatusObject(string name, string value)
+        public StatusObject(string name, bool value)
         {
             _name = name;
             _value = value;
