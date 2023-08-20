@@ -15,7 +15,7 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
             _value = value;
         }
 
-        string IJsonObject.ToString()
+        public string toString()
         {
             var jsonObject = new
             {

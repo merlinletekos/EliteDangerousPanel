@@ -17,7 +17,7 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
             _scoopable = scoopable;
         }
 
-        string IJsonObject.ToString()
+        public string toString()
         {
             var jsonObject = new
             {

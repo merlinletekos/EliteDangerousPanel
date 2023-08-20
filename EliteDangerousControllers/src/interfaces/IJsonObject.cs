@@ -10,6 +10,6 @@ namespace EliteDangerousControllers.src.interfaces
     {
         public string _name { set; get; }
 
-        public string ToString();
+        public string toString();
     }
 }
