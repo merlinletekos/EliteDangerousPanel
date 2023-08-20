@@ -2,6 +2,7 @@
 using EliteAPI.Abstractions.Events;
 using EliteAPI.Events.Status.Ship.Events;
 using EliteDangerousControllers.src.interfaces;
+using EliteDangerousControllers.src.Panels.FsdPanel;
 
 namespace EliteDangerousControllers.src.Panels
 {
@@ -34,7 +35,9 @@ namespace EliteDangerousControllers.src.Panels
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
         {
-            Console.WriteLine($"HardPoint: {@event.Value}");
+            var harPointStatus = new StatusObject("hardpointStatus", @event.Value);
+            string test = harPointStatus.toString();
+            Console.WriteLine(test);
         }
     }
 }
