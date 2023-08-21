@@ -30,14 +30,36 @@ namespace EliteDangerousControllers.src.Panels
 
         public void ListenEvents()
         {
+            // Status event
             _api.Events.On<HardpointsStatusEvent>(HardpointOpen);
+            _api.Events.On<CargoScoopStatusEvent>(CargoScoopOpen);
+            _api.Events.On<MassLockedStatusEvent>(MassLockedStatus);
+            _api.Events.On<GearStatusEvent>(LandingGearOpen);
         }
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
         {
-            var harPointStatus = new StatusObject("hardpointStatus", @event.Value);
-            string test = harPointStatus.toString();
-            Console.WriteLine(test);
+            StatusObject harPointStatus = new StatusObject("HardPointStatus", @event.Value);
+            Console.WriteLine(harPointStatus.toString());
+        }
+
+        private void CargoScoopOpen(CargoScoopStatusEvent @event, EventContext context)
+        {
+            StatusObject cargoScoopObject = new StatusObject("CargoScoopStatus", @event.Value);
+            Console.WriteLine(cargoScoopObject.toString());
+        }
+
+        private void MassLockedStatus(MassLockedStatusEvent @event, EventContext context)
+        {
+            StatusObject massLockedObject = new StatusObject("MassLockedStatus", @event.Value);
+            Console.WriteLine(massLockedObject.toString());
+        }
+
+        private void LandingGearOpen(GearStatusEvent @event, EventContext context)
+        {
+            StatusObject gearStatusObject = new StatusObject("LandingGearStatus", @event.Value);
+            Console.WriteLine(gearStatusObject.toString());
+
         }
     }
 }
