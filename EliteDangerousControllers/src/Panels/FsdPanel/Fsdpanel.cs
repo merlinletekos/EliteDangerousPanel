@@ -1,5 +1,6 @@
 ﻿using EliteAPI.Abstractions;
 using EliteAPI.Abstractions.Events;
+using EliteAPI.Events;
 using EliteAPI.Events.Status.Ship.Events;
 using EliteDangerousControllers.src.interfaces;
 using EliteDangerousControllers.src.Panels.FsdPanel;
@@ -35,6 +36,10 @@ namespace EliteDangerousControllers.src.Panels
             _api.Events.On<CargoScoopStatusEvent>(CargoScoopOpen);
             _api.Events.On<MassLockedStatusEvent>(MassLockedStatus);
             _api.Events.On<GearStatusEvent>(LandingGearOpen);
+
+            // Caution event
+            _api.Events.On<JetConeBoostEvent>(JetConeEvent);
+            _api.Events.On<InInterdictionStatusEvent>(InterdictionStatusListener);
         }
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
@@ -60,6 +65,16 @@ namespace EliteDangerousControllers.src.Panels
             StatusObject gearStatusObject = new StatusObject("LandingGearStatus", @event.Value);
             Console.WriteLine(gearStatusObject.toString());
 
+        }
+
+        private void JetConeEvent(JetConeBoostEvent @event, EventContext context)
+        {
+            Console.WriteLine(@event.BoostValue);
+        }
+
+        private void InterdictionStatusListener(InInterdictionStatusEvent @event, EventContext context) {
+            StatusObject interdictionStatusObject = new StatusObject("InterdictionStatus", @event.Value);
+            Console.WriteLine(interdictionStatusObject.toString());
         }
     }
 }
