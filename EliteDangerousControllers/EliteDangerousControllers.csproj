@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EliteAPI" Version="3.0.10" />
+    <PackageReference Include="EliteAPI" Version="3.1.3" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
   </ItemGroup>
 

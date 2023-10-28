@@ -1,5 +1,6 @@
 ﻿using EliteAPI.Abstractions;
 using EliteAPI.Abstractions.Events;
+using EliteAPI.Events;
 using EliteAPI.Events.Status.Ship.Events;
 using EliteDangerousControllers.src.interfaces;
 using EliteDangerousControllers.src.Panels.FsdPanel;
@@ -35,31 +36,45 @@ namespace EliteDangerousControllers.src.Panels
             _api.Events.On<CargoScoopStatusEvent>(CargoScoopOpen);
             _api.Events.On<MassLockedStatusEvent>(MassLockedStatus);
             _api.Events.On<GearStatusEvent>(LandingGearOpen);
+
+            // Caution event
+            _api.Events.On<JetConeBoostEvent>(JetConeEvent);
+            _api.Events.On<InInterdictionStatusEvent>(InterdictionStatusListener);
         }
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
         {
-            StatusObject harPointStatus = new StatusObject("HardPointStatus", @event.Value);
-            Console.WriteLine(harPointStatus.toString());
+            StatusObject hardPointStatus = new StatusObject("HardPointStatus", @event.Value);
+            _SerialConnection.SendMessage(hardPointStatus.toString());
         }
 
         private void CargoScoopOpen(CargoScoopStatusEvent @event, EventContext context)
         {
             StatusObject cargoScoopObject = new StatusObject("CargoScoopStatus", @event.Value);
-            Console.WriteLine(cargoScoopObject.toString());
+            _SerialConnection.SendMessage(cargoScoopObject.toString());
         }
 
         private void MassLockedStatus(MassLockedStatusEvent @event, EventContext context)
         {
             StatusObject massLockedObject = new StatusObject("MassLockedStatus", @event.Value);
-            Console.WriteLine(massLockedObject.toString());
+            _SerialConnection.SendMessage(massLockedObject.toString());
         }
 
         private void LandingGearOpen(GearStatusEvent @event, EventContext context)
         {
             StatusObject gearStatusObject = new StatusObject("LandingGearStatus", @event.Value);
-            Console.WriteLine(gearStatusObject.toString());
+            _SerialConnection.SendMessage(gearStatusObject.toString());
 
+        }
+
+        private void JetConeEvent(JetConeBoostEvent @event, EventContext context)
+        {
+            Console.WriteLine(@event.BoostValue);
+        }
+
+        private void InterdictionStatusListener(InInterdictionStatusEvent @event, EventContext context) {
+            StatusObject interdictionStatusObject = new StatusObject("InterdictionStatus", @event.Value);
+            _SerialConnection.SendMessage(interdictionStatusObject.toString());
         }
     }
 }
