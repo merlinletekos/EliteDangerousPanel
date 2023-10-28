@@ -8,7 +8,7 @@ namespace EliteDangerousControllers
     class EliteDangerousControllers
     {
 
-        private static string PORT_NAME = "COM5";
+        private static string PORT_NAME = "COM3";
         private static int PORT_PIN = 9600;
 
         private IControlPanel[]? _panels;

@@ -44,26 +44,26 @@ namespace EliteDangerousControllers.src.Panels
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
         {
-            StatusObject harPointStatus = new StatusObject("HardPointStatus", @event.Value);
-            Console.WriteLine(harPointStatus.toString());
+            StatusObject hardPointStatus = new StatusObject("HardPointStatus", @event.Value);
+            _SerialConnection.SendMessage(hardPointStatus.toString());
         }
 
         private void CargoScoopOpen(CargoScoopStatusEvent @event, EventContext context)
         {
             StatusObject cargoScoopObject = new StatusObject("CargoScoopStatus", @event.Value);
-            Console.WriteLine(cargoScoopObject.toString());
+            _SerialConnection.SendMessage(cargoScoopObject.toString());
         }
 
         private void MassLockedStatus(MassLockedStatusEvent @event, EventContext context)
         {
             StatusObject massLockedObject = new StatusObject("MassLockedStatus", @event.Value);
-            Console.WriteLine(massLockedObject.toString());
+            _SerialConnection.SendMessage(massLockedObject.toString());
         }
 
         private void LandingGearOpen(GearStatusEvent @event, EventContext context)
         {
             StatusObject gearStatusObject = new StatusObject("LandingGearStatus", @event.Value);
-            Console.WriteLine(gearStatusObject.toString());
+            _SerialConnection.SendMessage(gearStatusObject.toString());
 
         }
 
@@ -74,7 +74,7 @@ namespace EliteDangerousControllers.src.Panels
 
         private void InterdictionStatusListener(InInterdictionStatusEvent @event, EventContext context) {
             StatusObject interdictionStatusObject = new StatusObject("InterdictionStatus", @event.Value);
-            Console.WriteLine(interdictionStatusObject.toString());
+            _SerialConnection.SendMessage(interdictionStatusObject.toString());
         }
     }
 }
