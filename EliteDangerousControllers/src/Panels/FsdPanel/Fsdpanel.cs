@@ -40,6 +40,11 @@ namespace EliteDangerousControllers.src.Panels
             // Caution event
             _api.Events.On<JetConeBoostEvent>(JetConeEvent);
             _api.Events.On<InInterdictionStatusEvent>(InterdictionStatusListener);
+
+            // Status event
+            _api.Events.On<FsdJumpStatusEvent>(FsdJumpStatusEvent);
+            _api.Events.On<FsdCooldownStatusEvent>(FsdCooldownStatusEvent);
+            _api.Events.On<FsdChargingStatusEvent>(FsdChargingStatusEvent);
         }
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
@@ -74,6 +79,24 @@ namespace EliteDangerousControllers.src.Panels
 
         private void InterdictionStatusListener(InInterdictionStatusEvent @event, EventContext context) {
             StatusObject interdictionStatusObject = new StatusObject("InterdictionStatus", @event.Value);
+            _SerialConnection.SendMessage(interdictionStatusObject.toString());
+        }
+
+        private void FsdChargingStatusEvent(FsdChargingStatusEvent @event, EventContext context)
+        {
+            StatusObject interdictionStatusObject = new StatusObject("FsdChargingEvent", @event.Value);
+            _SerialConnection.SendMessage(interdictionStatusObject.toString());
+        }
+
+        private void FsdJumpStatusEvent(FsdJumpStatusEvent @event, EventContext context)
+        {
+            StatusObject interdictionStatusObject = new StatusObject("FsdJumpStatusEvent", @event.Value);
+            _SerialConnection.SendMessage(interdictionStatusObject.toString());
+        }
+
+        private void FsdCooldownStatusEvent(FsdCooldownStatusEvent @event, EventContext context)
+        {
+            StatusObject interdictionStatusObject = new StatusObject("FsdCooldownEvent", @event.Value);
             _SerialConnection.SendMessage(interdictionStatusObject.toString());
         }
     }
