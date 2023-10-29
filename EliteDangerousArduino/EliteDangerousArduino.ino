@@ -6,12 +6,16 @@
 
 #define HP_LED  0
 #define LG_LED  1
+#define ML_LED  2
+#define CG_LED  3
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 StaticJsonDocument<512> json_doc;
 
 boolean hp_led_satut;
 boolean lg_led_satut;
+boolean ml_led_satut;
+boolean cg_led_satut;
 
 void setup() {
   Serial.begin(9600);
@@ -32,6 +36,12 @@ void loop() {
     else if (event_name == "LandingGearStatus") {
       lg_led_satut = json_doc["value"];
     }
+    else if (event_name == "MassLockedStatus") {
+      ml_led_satut = json_doc["value"];
+    }
+    else if (event_name == "CargoScoopStatus") {
+      cg_led_satut = json_doc["value"];
+    }
   }
 
   setPixels();
@@ -43,6 +53,12 @@ void setPixels() {
   }
   if (lg_led_satut == true) {
     pixels.setPixelColor(LG_LED, pixels.Color(0, 150, 150));
+  }
+  if (ml_led_satut == true) {
+    pixels.setPixelColor(ML_LED, pixels.Color(0, 150, 150));
+  }
+  if (cg_led_satut == true) {
+    pixels.setPixelColor(CG_LED, pixels.Color(0, 150, 150));
   }
   pixels.show();
 }
