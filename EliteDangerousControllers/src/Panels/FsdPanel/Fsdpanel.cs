@@ -84,20 +84,20 @@ namespace EliteDangerousControllers.src.Panels
 
         private void FsdChargingStatusEvent(FsdChargingStatusEvent @event, EventContext context)
         {
-            StatusObject interdictionStatusObject = new StatusObject("FsdChargingEvent", @event.Value);
-            _SerialConnection.SendMessage(interdictionStatusObject.toString());
+            StatusObject fsdChargingStatusObject = new StatusObject("FsdChargingEvent", @event.Value);
+            _SerialConnection.SendMessage(fsdChargingStatusObject.toString());
         }
 
         private void FsdJumpStatusEvent(FsdJumpStatusEvent @event, EventContext context)
         {
-            StatusObject interdictionStatusObject = new StatusObject("FsdJumpStatusEvent", @event.Value);
-            _SerialConnection.SendMessage(interdictionStatusObject.toString());
+            StatusObject fsdJumpStatusObject = new StatusObject("FsdJumpStatusEvent", @event.Value);
+            _SerialConnection.SendMessage(fsdJumpStatusObject.toString());
         }
 
         private void FsdCooldownStatusEvent(FsdCooldownStatusEvent @event, EventContext context)
         {
-            StatusObject interdictionStatusObject = new StatusObject("FsdCooldownEvent", @event.Value);
-            _SerialConnection.SendMessage(interdictionStatusObject.toString());
+            StatusObject fsdCooldownStatusObject = new StatusObject("FsdCooldownEvent", @event.Value);
+            _SerialConnection.SendMessage(fsdCooldownStatusObject.toString());
         }
     }
 }
