@@ -14,6 +14,8 @@ namespace EliteDangerousControllers.src.Panels
 
         private IEliteDangerousApi _api;
 
+        private string[] _scoopableStars = { "O", "B", "A", "F", "G", "K", "M" };
+
         public Fsdpanel(SerialConnection serialConnection, EliteConnection eliteConnection)
         {
             _SerialConnection = serialConnection;
@@ -45,6 +47,13 @@ namespace EliteDangerousControllers.src.Panels
             _api.Events.On<FsdJumpStatusEvent>(FsdJumpStatusEvent);
             _api.Events.On<FsdCooldownStatusEvent>(FsdCooldownStatusEvent);
             _api.Events.On<FsdChargingStatusEvent>(FsdChargingStatusEvent);
+
+            // Data for screen
+            _api.Events.On<LocationEvent>(LocationEventListener);
+            _api.Events.On<FsdJumpEvent>(LocationJumpEventListener);
+            _api.Events.On<FsdTargetEvent>(LocationTargetListener);
+            _api.Events.On<NavRouteClearEvent>(LocationNavRouteClearListener);
+
         }
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
@@ -98,6 +107,31 @@ namespace EliteDangerousControllers.src.Panels
         {
             StatusObject fsdCooldownStatusObject = new StatusObject("FsdCooldownEvent", @event.Value);
             _SerialConnection.SendMessage(fsdCooldownStatusObject.toString());
+        }
+
+        // LOCATION LISTENER
+        private void LocationEventListener(LocationEvent @event, EventContext context)
+        {
+            LocationObject locationObject = new LocationObject("LocationCurrent", @event.StarSystem, false);
+            _SerialConnection.SendMessage(locationObject.toString());
+        }
+
+        private void LocationJumpEventListener(FsdJumpEvent @event, EventContext context)
+        {
+            LocationObject locationObject = new LocationObject("LocationCurrent", @event.StarSystem, false);
+            _SerialConnection.SendMessage(locationObject.toString());
+        }
+
+        private void LocationTargetListener(FsdTargetEvent @event, EventContext context)
+        {
+            LocationObject locationObject = new LocationObject("LocationTarget", @event.Name, _scoopableStars.Contains(@event.StarClass));
+            _SerialConnection.SendMessage(locationObject.toString());
+        }
+
+        private void LocationNavRouteClearListener(NavRouteClearEvent @event, EventContext context)
+        {
+            StatusObject locationObject = new StatusObject("RouteClearEvent", false);
+            _SerialConnection.SendMessage(locationObject.toString());
         }
     }
 }
