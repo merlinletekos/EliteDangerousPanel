@@ -2,13 +2,12 @@
 using EliteAPI;
 using EliteAPI.Abstractions;
 using EliteAPI.Events;
-using EliteDangerousControllers.src.interfaces;
 
 namespace EliteDangerousControllers.src
 {
     class EliteConnection
     {
-        private IEliteDangerousApi _api;
+        private readonly IEliteDangerousApi _api;
 
         public EliteConnection()
         {
@@ -29,10 +28,10 @@ namespace EliteDangerousControllers.src
         public void ListenEvent()
         {
             _api.Events.WaitFor<ShutdownEvent>();
-            stopApi();
+            StopApi();
         }
 
-        private async void stopApi()
+        private async void StopApi()
         {
             Console.WriteLine("EliteDangerousControllers stopped");
             await _api.StopAsync();

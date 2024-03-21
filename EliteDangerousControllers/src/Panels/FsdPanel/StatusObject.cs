@@ -7,12 +7,12 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
     class StatusObject: IJsonObject
     {
         public string _name { set; get; }
-        public bool _value { set; get; }
+        public bool Value { set; get; }
 
         public StatusObject(string name, bool value)
         {
             _name = name;
-            _value = value;
+            Value = value;
         }
 
         public string toString()
@@ -20,7 +20,7 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
             var jsonObject = new
             {
                 name = _name,
-                value = _value
+                value = Value
             };
             return JsonSerializer.Serialize(jsonObject);
         }

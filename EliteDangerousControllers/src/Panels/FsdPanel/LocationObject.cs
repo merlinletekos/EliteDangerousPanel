@@ -7,14 +7,14 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
     class LocationObject: IJsonObject
     {
         public string _name { get; set; }
-        public string _value { get; set; }
-        public bool _scoopable { get; set; }
+        public string Value { get; set; }
+        public bool Scoopable { get; set; }
 
         public LocationObject(string name, string value, bool scoopable)
         {
             _name = name;
-            _value = value;
-            _scoopable = scoopable;
+            Value = value;
+            Scoopable = scoopable;
         }
 
         public string toString()
@@ -22,8 +22,8 @@ namespace EliteDangerousControllers.src.Panels.FsdPanel
             var jsonObject = new
             {
                 name = _name,
-                value = _value,
-                scoopable = _scoopable
+                value = Value,
+                scoopable = Scoopable
             };
             return JsonSerializer.Serialize(jsonObject);
         }

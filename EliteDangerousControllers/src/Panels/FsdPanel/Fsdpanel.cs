@@ -12,9 +12,9 @@ namespace EliteDangerousControllers.src.Panels
         public SerialConnection _SerialConnection { get; set; }
         public EliteConnection _EliteConnection { get; set; }
 
-        private IEliteDangerousApi _api;
+        private readonly IEliteDangerousApi _api;
 
-        private string[] _scoopableStars = { "O", "B", "A", "F", "G", "K", "M" };
+        private readonly string[] _scoopableStars = { "O", "B", "A", "F", "G", "K", "M" };
 
         public Fsdpanel(SerialConnection serialConnection, EliteConnection eliteConnection)
         {
@@ -58,25 +58,25 @@ namespace EliteDangerousControllers.src.Panels
 
         private void HardpointOpen(HardpointsStatusEvent @event, EventContext context)
         {
-            StatusObject hardPointStatus = new StatusObject("HardPointStatus", @event.Value);
+            StatusObject hardPointStatus = new("HardPointStatus", @event.Value);
             _SerialConnection.SendMessage(hardPointStatus.toString());
         }
 
         private void CargoScoopOpen(CargoScoopStatusEvent @event, EventContext context)
         {
-            StatusObject cargoScoopObject = new StatusObject("CargoScoopStatus", @event.Value);
+            StatusObject cargoScoopObject = new("CargoScoopStatus", @event.Value);
             _SerialConnection.SendMessage(cargoScoopObject.toString());
         }
 
         private void MassLockedStatus(MassLockedStatusEvent @event, EventContext context)
         {
-            StatusObject massLockedObject = new StatusObject("MassLockedStatus", @event.Value);
+            StatusObject massLockedObject = new("MassLockedStatus", @event.Value);
             _SerialConnection.SendMessage(massLockedObject.toString());
         }
 
         private void LandingGearOpen(GearStatusEvent @event, EventContext context)
         {
-            StatusObject gearStatusObject = new StatusObject("LandingGearStatus", @event.Value);
+            StatusObject gearStatusObject = new("LandingGearStatus", @event.Value);
             _SerialConnection.SendMessage(gearStatusObject.toString());
 
         }
@@ -87,51 +87,51 @@ namespace EliteDangerousControllers.src.Panels
         }
 
         private void InterdictionStatusListener(InInterdictionStatusEvent @event, EventContext context) {
-            StatusObject interdictionStatusObject = new StatusObject("InterdictionStatus", @event.Value);
+            StatusObject interdictionStatusObject = new("InterdictionStatus", @event.Value);
             _SerialConnection.SendMessage(interdictionStatusObject.toString());
         }
 
         private void FsdChargingStatusEvent(FsdChargingStatusEvent @event, EventContext context)
         {
-            StatusObject fsdChargingStatusObject = new StatusObject("FsdChargingEvent", @event.Value);
+            StatusObject fsdChargingStatusObject = new("FsdChargingEvent", @event.Value);
             _SerialConnection.SendMessage(fsdChargingStatusObject.toString());
         }
 
         private void FsdJumpStatusEvent(FsdJumpStatusEvent @event, EventContext context)
         {
-            StatusObject fsdJumpStatusObject = new StatusObject("FsdJumpStatusEvent", @event.Value);
+            StatusObject fsdJumpStatusObject = new("FsdJumpStatusEvent", @event.Value);
             _SerialConnection.SendMessage(fsdJumpStatusObject.toString());
         }
 
         private void FsdCooldownStatusEvent(FsdCooldownStatusEvent @event, EventContext context)
         {
-            StatusObject fsdCooldownStatusObject = new StatusObject("FsdCooldownEvent", @event.Value);
+            StatusObject fsdCooldownStatusObject = new("FsdCooldownEvent", @event.Value);
             _SerialConnection.SendMessage(fsdCooldownStatusObject.toString());
         }
 
         // LOCATION LISTENER
         private void LocationEventListener(LocationEvent @event, EventContext context)
         {
-            LocationObject locationObject = new LocationObject("LocationCurrent", @event.StarSystem, false);
+            LocationObject locationObject = new("LocationCurrent", @event.StarSystem, false);
             _SerialConnection.SendMessage(locationObject.toString());
         }
 
         private void LocationJumpEventListener(FsdJumpEvent @event, EventContext context)
         {
-            LocationObject locationObject = new LocationObject("LocationCurrent", @event.StarSystem, false);
+            LocationObject locationObject = new("LocationCurrent", @event.StarSystem, false);
             _SerialConnection.SendMessage(locationObject.toString());
         }
 
         private void LocationTargetListener(FsdTargetEvent @event, EventContext context)
         {
-            LocationObject locationObject = new LocationObject("LocationTarget", @event.Name, _scoopableStars.Contains(@event.StarClass));
+            LocationObject locationObject = new("LocationTarget", @event.Name, _scoopableStars.Contains(@event.StarClass));
             _SerialConnection.SendMessage(locationObject.toString());
         }
 
         private void LocationNavRouteClearListener(NavRouteClearEvent @event, EventContext context)
         {
-            StatusObject locationObject = new StatusObject("RouteClearEvent", false);
-            _SerialConnection.SendMessage(locationObject.toString());
+            StatusObject navRouteClearEvent = new("RouteClearEvent", false);
+            _SerialConnection.SendMessage(navRouteClearEvent.toString());
         }
     }
 }
