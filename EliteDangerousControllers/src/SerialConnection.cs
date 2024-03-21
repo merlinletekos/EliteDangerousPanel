@@ -4,21 +4,22 @@ namespace EliteDangerousControllers.src
 {
     class SerialConnection
     {
-        private SerialPort _serialPort;
+        private readonly SerialPort _serialPort;
 
         public SerialConnection(string l_portName, int l_port)
         {
             _serialPort = new SerialPort(l_portName, l_port);
-            startSerialConnection();
+            StartSerialConnection();
         }
 
-        private void startSerialConnection()
+        private void StartSerialConnection()
         {
             _serialPort?.Open();
         }
 
         public void SendMessage(string message)
         {
+            Console.WriteLine(message);
             _serialPort.Write(message);
         }
 
